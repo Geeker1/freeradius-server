@@ -43,7 +43,9 @@ typedef struct fr_event_fd_t {
 	void			*ctx;
 } fr_event_fd_t;
 
+#ifndef FR_EV_MAX_FDS
 #define FR_EV_MAX_FDS (512)
+#endif
 
 #undef USEC
 #define USEC (1000000)
@@ -81,7 +83,6 @@ struct fr_event_t {
 	fr_event_t		**parent;
 	int			heap;
 };
-
 
 static int fr_event_list_time_cmp(void const *one, void const *two)
 {
